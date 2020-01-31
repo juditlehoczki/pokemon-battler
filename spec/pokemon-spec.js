@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const { spy } = require("sinon");
 const Pokemon = require("../pokemon.js");
+console.log(Pokemon);
 
 describe("Pokemon", () => {
   describe("Pokemon Properties", () => {

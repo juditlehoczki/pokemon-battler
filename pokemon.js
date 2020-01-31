@@ -12,8 +12,8 @@ class Pokemon {
   }
   useYourMove() {
     return this.move;
-  };
-};
+  }
+}
 
 //Creating a few Pokemons to catch
 const pikachu = new Pokemon(

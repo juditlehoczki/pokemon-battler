@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec"
+    "test": "mocha spec",
+    "test:watch": "mocha spec --watch"
   },
   "repository": {
     "type": "git",
