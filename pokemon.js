@@ -1,19 +1,19 @@
-function Pokemon(newName, newHealth, newDamage, newSound, newMove, newType) {
-  this.name = newName;
-  this.health = newHealth;
-  this.damage = newDamage;
-  this.sound = newSound;
-  this.move = newMove;
-  this.type = newType || "normal";
+class Pokemon {
+  constructor(newName, newHealth, newDamage, newSound, newMove, newType) {
+    this.name = newName;
+    this.health = newHealth;
+    this.damage = newDamage;
+    this.sound = newSound;
+    this.move = newMove;
+    this.type = newType || "normal";
+  }
+  talk() {
+    return this.sound;
+  }
+  useYourMove() {
+    return this.move;
+  }
 }
-
-Pokemon.prototype.talk = function() {
-  return this.sound;
-};
-
-Pokemon.prototype.useYourMove = function() {
-  return this.move;
-};
 
 //Creating a few Pokemons to catch
 const pikachu = new Pokemon(
