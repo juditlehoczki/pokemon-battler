@@ -7,7 +7,7 @@ const {
 const Trainer = require('../trainer.js');
 const Pokemon = require('../pokemon.js');
 
-describe.only('Trainer', () => {
+describe('Trainer', () => {
   describe('Trainer properties', () => {
     it('has a name when passed a newName argument', () => {
       const trainer = new Trainer('Steve');
@@ -22,7 +22,6 @@ describe.only('Trainer', () => {
 
   describe('Trainer methods', () => {
     it('has a catch method', () => {
-
       const trainer = new Trainer('Steve');
       expect(trainer.name).to.equal('Steve');
     })
@@ -35,10 +34,10 @@ describe.only('Trainer', () => {
         "Mega Punch",
         "grass")
       const trainer = new Trainer('Steve');
-      const trainer2 = new Trainer('Steve');
+      // const trainer2 = new Trainer('Steve');
 
       trainer.catch(pokemon);
-      trainer2.catch(pokemon);
+      // trainer2.catch(pokemon);
 
       expect(trainer.storage[0].name).to.equal('Pikachu');
 
