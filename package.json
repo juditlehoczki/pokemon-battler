@@ -20,6 +20,7 @@
   "homepage": "https://github.com/juditlehoczki/fun-pokemon-battler#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "inquirer": "^7.0.4",
     "mocha": "^7.0.1",
     "sinon": "^8.1.1"
   }
