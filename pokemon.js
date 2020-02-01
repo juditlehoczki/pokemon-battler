@@ -17,22 +17,22 @@ class Pokemon {
 
 class Bulbasaur extends Pokemon {
   constructor() {
-    super("Bulbasaur", 800, 100, "Bulbasaur!", "Vine Whip", "grass");
+    super("Bulbasaur", 800, 100, "Bulba bulba boo!", "Vine Whip", "grass");
   }
 }
 class Charmander extends Pokemon {
   constructor() {
-    super("Charmander", 780, 104, "Charmander!", "Fire Punch", "fire");
+    super("Charmander", 780, 104, "Char char char!", "Fire Punch", "fire");
   }
 }
 class Squirtle extends Pokemon {
   constructor() {
-    super("Squirtle", 790, 103, "Squirtle!", "Bubble Beam", "water");
+    super("Squirtle", 790, 103, "Squirlysquirtsquirt!", "Bubble Beam", "water");
   }
 }
 class Pidgey extends Pokemon {
   constructor() {
-    super("Pidgey", 830, 80, "Pidgey!", "Peck");
+    super("Pidgey", 830, 80, "Coo roo-ctoo-coo!", "Peck");
   }
 }
 
