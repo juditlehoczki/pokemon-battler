@@ -5,7 +5,7 @@ const {
   Squirtle,
   Pidgey
 } = require("./pokemon.js");
-const Trainer = require("./pokemon.js");
+const Trainer = require("./trainer.js");
 
 class Battle {
   constructor(newTrainer1, newTrainer2, n, m) {
@@ -13,20 +13,76 @@ class Battle {
     this.trainer2 = newTrainer2;
     this.pokeToFight1 = newTrainer1.bag[n || 0];
     this.pokeToFight2 = newTrainer2.bag[m || 0];
-    this.p1health = this.pokeToFight1.health;
-    this.p2health = this.pokeToFight2.health;
-    this.p1damage = this.pokeToFight1.damage;
-    this.p2damage = this.pokeToFight2.damage;
-    this.p1sound = this.pokeToFight1.sound;
-    this.p2sound = this.pokeToFight2.sound;
-    this.p1move = this.pokeToFight1.move;
-    this.p2move = this.pokeToFight2.move;
-    this.p1type = this.pokeToFight1.type;
-    this.p2type = this.pokeToFight2.type;
     this.whoIsNext = 1;
+    this.round = 1;
   }
 
-  fight() {}
+  fight() {
+    let attacker;
+    let defender;
+    if (this.whoIsNext === 1) {
+      attacker = this.pokeToFight1;
+      defender = this.pokeToFight2;
+      this.whoIsNext++;
+    } else if (this.whoIsNext === 2) {
+      attacker = this.pokeToFight2;
+      defender = this.pokeToFight1;
+      this.whoIsNext--;
+    }
+
+    let multiplier;
+    if (
+      (attacker.type === "grass" && defender.type === "water") ||
+      (attacker.type === "water" && defender.type === "fire") ||
+      (attacker.type === "fire" && defender.type === "grass")
+    ) {
+      multiplier = 1.25;
+    } else if (
+      (attacker.type === "water" && defender.type === "grass") ||
+      (attacker.type === "fire" && defender.type === "water") ||
+      (attacker.type === "grass" && defender.type === "fire")
+    ) {
+      multiplier = 0.75;
+    } else {
+      multiplier = 1;
+    }
+
+    defender.health -= attacker.damage * multiplier;
+
+    let message;
+    if (defender.health > 0) {
+      message = `Round \#${this.round}: ${attacker.name} caused ${attacker.damage} point damage to ${defender.name}. ${defender.name} has ${defender.health} health left.`;
+    } else {
+      message = `Game Over! ${attacker.name} struck with ${attacker.move} (${attacker.sound}) which made ${defender.name} faint. The winner is: ${attacker.name}!`;
+    }
+
+    let result = message;
+    this.round++;
+    // console.log(result);
+    return result;
+  }
 }
+
+const judit = new Trainer("Judit");
+const chris = new Trainer("Chris");
+const bulb = new Bulbasaur();
+const char = new Charmander();
+judit.catch(bulb);
+chris.catch(char);
+const battle = new Battle(judit, chris);
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
+battle.fight();
 
 module.exports = Battle;
