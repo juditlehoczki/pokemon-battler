@@ -80,7 +80,7 @@ describe("Battle", () => {
       chris.catch(char);
       const battle = new Battle(judit, chris);
       battle.fight();
-      //Charmander is fire, Bulbasaur is grass so Bulbasaur is weak, should get a multiplier of 0.75 on his 100 damage = 75
+      //Charmander is fire, Bulbasaur is grass so Bulbasaur is weak, should get a multiplier of 0.75 on his 100 damage => 75
       expect(char.health).to.equal(705); //780 - 75 = 705
     });
   });
