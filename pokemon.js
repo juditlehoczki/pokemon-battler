@@ -1,10 +1,10 @@
 class Pokemon {
   constructor(newName, newHealth, newDamage, newSound, newMove, newType) {
     this.name = newName;
-    this.health = newHealth;
-    this.damage = newDamage;
-    this.sound = newSound;
-    this.move = newMove;
+    this.health = newHealth || 750;
+    this.damage = newDamage || 100;
+    this.sound = newSound || this.name;
+    this.move = newMove || "Closes eyes...";
     this.type = newType || "normal";
   }
   talk() {
@@ -15,33 +15,25 @@ class Pokemon {
   }
 }
 
-//Creating a few Pokemons to catch
-const pikachu = new Pokemon(
-  "Pikachu",
-  100,
-  10,
-  "Pika pika!",
-  "Mega Punch",
-  "grass"
-);
-const bulbasaur = new Pokemon(
-  "Bulbasaur",
-  90,
-  8,
-  "Bulba bulba!",
-  "Mega Kick",
-  "water"
-);
-const charmander = new Pokemon(
-  "Charmander",
-  95,
-  7,
-  "Char char!",
-  "Jump",
-  "fire"
-);
-const squirtle = new Pokemon("Squirtle", 85, 12, "Squirt squirt!", "Duck");
+class Bulbasaur extends Pokemon {
+  constructor() {
+    super("Bulbasaur", 800, 100, "Bulbasaur!", "Vine Whip", "grass");
+  }
+}
+class Charmander extends Pokemon {
+  constructor() {
+    super("Charmander", 780, 104, "Charmander!", "Fire Punch", "fire");
+  }
+}
+class Squirtle extends Pokemon {
+  constructor() {
+    super("Squirtle", 790, 103, "Squirtle!", "Bubble Beam", "water");
+  }
+}
+class Pidgey extends Pokemon {
+  constructor() {
+    super("Pidgey", 830, 80, "Pidgey!", "Peck");
+  }
+}
 
-const pokemonsToCatch = [pikachu, bulbasaur, charmander, squirtle];
-
-module.exports = Pokemon;
+module.exports = { Pokemon, Bulbasaur, Charmander, Squirtle, Pidgey };
