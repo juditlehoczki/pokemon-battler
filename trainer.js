@@ -1,11 +1,11 @@
 class Trainer {
   constructor(newName) {
     this.name = newName;
-    this.storage = [];
+    this.bag = [];
   }
-  catch (pokemon) {
-    if (this.storage.length < 6) {
-      this.storage.push(pokemon);
+  catch(pokemon) {
+    if (this.bag.length < 6) {
+      this.bag.push(pokemon);
     }
     return pokemon.talk();
   }
