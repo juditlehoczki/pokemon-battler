@@ -53,36 +53,13 @@ class Battle {
     if (defender.health > 0) {
       message = `Round \#${this.round}: ${attacker.name} caused ${attacker.damage} point damage to ${defender.name}. ${defender.name} has ${defender.health} health left.`;
     } else {
-      message = `Game Over! ${attacker.name} struck with ${attacker.move} (${attacker.sound}) which made ${defender.name} faint. The winner is: ${attacker.name}!`;
+      message = `Round \#${this.round}: ${attacker.name} struck with ${attacker.move} (${attacker.sound}) which made ${defender.name} faint. The winner is: ${attacker.name}! Game Over`;
     }
 
     let result = message;
     this.round++;
-    // console.log(result);
-    return result;
+    console.log(result);
   }
 }
-
-const judit = new Trainer("Judit");
-const chris = new Trainer("Chris");
-const bulb = new Bulbasaur();
-const char = new Charmander();
-judit.catch(bulb);
-chris.catch(char);
-const battle = new Battle(judit, chris);
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
-battle.fight();
 
 module.exports = Battle;
