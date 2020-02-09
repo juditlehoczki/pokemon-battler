@@ -1,3 +1,5 @@
+// to add explanation on weakness/strength into the result messages
+// to change the code to console log rounds one by one instead of all at once
 "use strict";
 const inquirer = require("inquirer");
 const {
@@ -111,8 +113,32 @@ const game = {
         const random = pokedex[Math.floor(Math.random() * pokedex.length)];
         const pokemon2 = pokemons[random];
         trainer2.catch(pokemon2);
+        let evaluation;
+        if (
+          (pokemon1.type === "grass" && pokemon2.type === "water") ||
+          (pokemon1.type === "water" && pokemon2.type === "fire") ||
+          (pokemon1.type === "fire" && pokemon2.type === "grass")
+        ) {
+          evaluation = `${pokemon1.name} is stronger than ${
+            pokemon2.name
+          }. This increase ${pokemon1.name}'s damage to ${pokemon1.damage *
+            1.25} and decreases ${pokemon2.name}'s damage to ${pokemon2.damage *
+            0.75}`;
+        } else if (
+          (pokemon1.type === "water" && pokemon2.type === "grass") ||
+          (pokemon1.type === "fire" && pokemon2.type === "water") ||
+          (pokemon1.type === "grass" && pokemon2.type === "fire")
+        ) {
+          evaluation = `${pokemon2.name} is stronger than ${
+            pokemon1.name
+          }. This increase ${pokemon2.name}'s damage to ${pokemon2.damage *
+            1.25} and decreases ${pokemon1.name}'s damage to ${pokemon1.damage *
+            0.75}`;
+        } else {
+          evaluation = `The pokemons are of the same type.`;
+        }
         console.log(
-          `${trainer2.name} has also just caught ${pokemon2.name}. I think you guys might be ready for battle!`
+          `${trainer2.name} has also just caught ${pokemon2.name}.\nAfter careful examination you have the following information:\n${pokemon1.name} has ${pokemon1.health} health, can cause ${pokemon1.damage} points of damage as default and is a ${pokemon1.type} pokemon.\n${pokemon2.name} has ${pokemon2.health} health, can cause ${pokemon2.damage} points of damage as default and is a ${pokemon2.type} pokemon.\nYou also know that a grass pokemon is weak against fire but strong against water, a fire pokemon is weak against water but strong against grass and a water pokemon is strong against fire but weak against grass. A normal pokemon has no strength or weakness against other pokemons.\n${evaluation}`
         );
         game.battle(trainer1, trainer2);
       });
@@ -123,7 +149,7 @@ const game = {
       .prompt({
         type: "confirm",
         name: "battle",
-        message: `Let the battle being. Is ${trainer1.bag[0].name} ready?`,
+        message: `I think you guys might be ready to battle! Are you ready, ${trainer1.bag[0].name}?`,
         default: true
       })
       .then(answers => {

@@ -51,7 +51,11 @@ class Battle {
 
     let message;
     if (defender.health > 0) {
-      message = `Round \#${this.round}: ${attacker.name} caused ${attacker.damage} point damage to ${defender.name}. ${defender.name} has ${defender.health} health left.`;
+      message = `Round \#${this.round}: ${
+        attacker.name
+      } caused ${attacker.damage * multiplier} point damage to ${
+        defender.name
+      }. ${defender.name} has ${defender.health} health left.`;
     } else {
       message = `Round \#${this.round}: ${attacker.name} struck with ${attacker.move} (${attacker.sound}) which made ${defender.name} faint. The winner is: ${attacker.name}! Game Over`;
     }
